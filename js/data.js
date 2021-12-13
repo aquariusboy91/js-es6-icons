@@ -5,7 +5,8 @@ let icon_data = [
 		type: 'cat',
 		family: 'fas',
 		color: 'orange',
-		categories: 'animal'
+		categories: 'animal',
+		element: 'all'
 	},
 	{
 		name: 'crow',
@@ -13,7 +14,8 @@ let icon_data = [
 		type: 'crow',
 		family: 'fas',
 		color: 'orange',
-		categories: 'animal'
+		categories: 'animal',
+		element: 'all'
 	},
 	{
 		name: 'dog',
@@ -21,7 +23,8 @@ let icon_data = [
 		type: 'dog',
 		family: 'fas',
 		color: 'orange',
-		categories: 'animal'
+		categories: 'animal',
+		element: 'all'
 	},
 	{
 		name: 'dove',
@@ -29,7 +32,8 @@ let icon_data = [
 		type: 'dove',
 		family: 'fas',
 		color: 'orange',
-		categories: 'animal'
+		categories: 'animal',
+		element: 'all'
 	},
 	{
 		name: 'dragon',
@@ -37,7 +41,8 @@ let icon_data = [
 		type: 'dragon',
 		family: 'fas',
 		color: 'orange',
-		categories: 'animal'
+		categories: 'animal',
+		element: 'all'
 	},
 	{
 		name: 'horse',
@@ -45,7 +50,8 @@ let icon_data = [
 		type: 'horse',
 		family: 'fas',
 		color: 'orange',
-		categories: 'animal'
+		categories: 'animal',
+		element: 'all'
 	},
 	{
 		name: 'hippo',
@@ -53,7 +59,8 @@ let icon_data = [
 		type: 'hippo',
 		family: 'fas',
 		color: 'orange',
-		categories: 'animal'
+		categories: 'animal',
+		element: 'all'
 	},
 	{
 		name: 'fish',
@@ -61,7 +68,8 @@ let icon_data = [
 		type: 'fish',
 		family: 'fas',
 		color: 'orange',
-		categories: 'animal'
+		categories: 'animal',
+		element: 'all'
 	},
 	{
 		name: 'carrot',
@@ -69,7 +77,8 @@ let icon_data = [
 		type: 'carrot',
 		family: 'fas',
 		color: 'green',
-		categories: 'vegetable'
+		categories: 'vegetable',
+		element: 'all'
 	},
 	{
 		name: 'apple-alt',
@@ -77,7 +86,8 @@ let icon_data = [
 		type: 'apple-alt',
 		family: 'fas',
 		color: 'green',
-		categories: 'vegetable'
+		categories: 'vegetable',
+		element: 'all'
 	},
 	{
 		name: 'lemon',
@@ -85,7 +95,8 @@ let icon_data = [
 		type: 'lemon',
 		family: 'fas',
 		color: 'green',
-		categories: 'vegetable'
+		categories: 'vegetable',
+		element: 'all'
 	},
 	{
 		name: 'pepper-hot',
@@ -93,7 +104,8 @@ let icon_data = [
 		type: 'pepper-hot',
 		family: 'fas',
 		color: 'green',
-		categories: 'vegetable'
+		categories: 'vegetable',
+		element: 'all'
 	},
 	{
 		name: 'astronaut',
@@ -101,7 +113,8 @@ let icon_data = [
 		type: 'user-astronaut',
 		family: 'fas',
 		color: 'blue',
-		categories: 'user'
+		categories: 'user',
+		element: 'all'
 	},
 	{
 		name: 'graduate',
@@ -109,7 +122,8 @@ let icon_data = [
 		type: 'user-graduate',
 		family: 'fas',
 		color: 'blue',
-		categories: 'user'
+		categories: 'user',
+		element: 'all'
 	},
 	{
 		name: 'ninja',
@@ -117,7 +131,8 @@ let icon_data = [
 		type: 'user-ninja',
 		family: 'fas',
 		color: 'blue',
-		categories: 'user'
+		categories: 'user',
+		element: 'all'
 	},
 	{
 		name: 'secret',
@@ -125,7 +140,8 @@ let icon_data = [
 		type: 'user-secret',
 		family: 'fas',
 		color: 'blue',
-		categories: 'user'
+		categories: 'user',
+		element: 'all'
 	}
 ];
 
@@ -137,54 +153,53 @@ let icon_data = [
 // creo un container principale
 let container = document.createElement("div");
 
-let select = `
-	<div>
-		<select name="icon_data" id="icon_data">
-		<option value="all">All</option>
-		<option value="animal">Animal</option>
-		<option value="vegetable">Vegetables</option>
-		<option value="user">User</option>
-		</select>
-	</div>`
+container.classList.add("container");
 
-	document.writeln(select);
+document.body.append(container);
 
 let select_data = document.getElementById('icon_data');
 	var value_select = select_data.value;
-// 	console.log(value_select);
+	console.log(value_select);
+
+	for (let key in icon_data) {
+		let icon = `
+		<div>
+			<div>
+				${icon_data[key].name}
+				<i style="color:${icon_data[key].color};" class="${icon_data[key].family} ${icon_data[key].prefix}${icon_data[key].type}"></i>
+			</div>
+		</div>` 
+		;
+		container.innerHTML += icon;
+	}
+
+
 
 	select_data.addEventListener('change', (event) => {
 		let valore = event.target.value;
 		console.log(valore);
 
-		for(key in icon_data) {
+		container.innerHTML = "";
+		for (let key in icon_data) {
 			let icon = `
 			<div>
 				<div>
 					${icon_data[key].name}
 					<i style="color:${icon_data[key].color};" class="${icon_data[key].family} ${icon_data[key].prefix}${icon_data[key].type}"></i>
 				</div>
-			</div>`
+			</div>` 
+			;
 			
-			if (valore == icon_data[key].categories) {
-				document.writeln(icon);
-			}
-		
+		if (valore === icon_data[key].categories) {
+			container.innerHTML += icon;
+		} else if (valore === icon_data[key].element){
+			container.innerHTML += icon;
 		}
-
-		
-		
 		
 
+		
+		};
   });
-
-// let select_data = document.getElementById('icon_data');
-// var value_select = select_data.value;
-// console.log(value_select);
-
-// if(value_select == "Animal") {
-
-// }
 
 
 // Milestone 2
