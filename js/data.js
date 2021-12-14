@@ -164,9 +164,9 @@ let select_data = document.getElementById('icon_data');
 	for (let key in icon_data) {
 		let icon = `
 		<div>
-			<div>
-				${icon_data[key].name}
-				<i style="color:${icon_data[key].color};" class="${icon_data[key].family} ${icon_data[key].prefix}${icon_data[key].type}"></i>
+			<div class = "icon-div">
+			<i style="color:${icon_data[key].color};" class="icon-style ${icon_data[key].family} ${icon_data[key].prefix}${icon_data[key].type}"></i>
+				<span class="icon-name">${icon_data[key].name}</span>
 			</div>
 		</div>` 
 		;
@@ -182,13 +182,13 @@ let select_data = document.getElementById('icon_data');
 		container.innerHTML = "";
 		for (let key in icon_data) {
 			let icon = `
-			<div>
-				<div>
-					${icon_data[key].name}
-					<i style="color:${icon_data[key].color};" class="${icon_data[key].family} ${icon_data[key].prefix}${icon_data[key].type}"></i>
-				</div>
-			</div>` 
-			;
+		<div>
+			<div class = "icon-div">
+			<i style="color:${icon_data[key].color};" class="icon-style ${icon_data[key].family} ${icon_data[key].prefix}${icon_data[key].type}"></i>
+				<span class="icon-name">${icon_data[key].name}</span>
+			</div>
+		</div>` 
+		;
 			
 		if (valore === icon_data[key].categories) {
 			container.innerHTML += icon;
